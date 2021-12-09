@@ -188,7 +188,6 @@ create_emr_cluster = EmrCreateJobFlowOperator(
     job_flow_overrides=JOB_FLOW_OVERRIDES,
     aws_conn_id="aws_default",
     emr_conn_id="emr_default",
-    region_name="us-east-1",
     dag=dag,
 )
 
@@ -226,7 +225,6 @@ terminate_emr_cluster = EmrTerminateJobFlowOperator(
     task_id="terminate_emr_cluster",
     job_flow_id="{{ task_instance.xcom_pull(task_ids='create_emr_cluster', key='return_value') }}",
     aws_conn_id="aws_default",
-    region_name="us-east-1",
     dag=dag,
 )
 
