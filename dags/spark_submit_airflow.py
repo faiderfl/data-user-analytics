@@ -218,7 +218,6 @@ step_checker = EmrStepSensor(
     + str(last_step)
     + "] }}",
     aws_conn_id="aws_default",
-    region_name="us-east-1",
     dag=dag,
 )
 
