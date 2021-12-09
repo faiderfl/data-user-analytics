@@ -7,7 +7,7 @@ from pyspark.sql.functions import array_contains, expr, when
 #Classification Movie Review Logic
 
 
-sc = SparkSession.builder.appName("Read_movies_review").config("spark.hadoop.fs.s3a.access.key", "AKIAWS5YIEDA2PHYS3RO").config("spark.hadoop.fs.s3a.secret.key", "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").config("spark.hadoop.fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem").getOrCreate() 
+sc = SparkSession.builder.appName("Read_movies_review").getOrCreate() 
 
 movies_reviews= sc.read.option("inferSchema", "false").options(header='true',sep=",").csv("s3a://raw-data-bootcamp/movie_review.csv")
 movies_reviews.show(5)
